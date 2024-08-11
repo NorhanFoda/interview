@@ -31,8 +31,6 @@ class RegisterController extends Controller
     public function store(RegisterRequest $request)
     {
         try{
-
-            DB::beginTransaction();
             $user = $this->repository->create($request->validated());
             DB::commit();
             return redirect()->route('login.form')->with('success', 'Registration successful! Please log in.');

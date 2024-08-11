@@ -11,7 +11,7 @@ class Account extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['email', 'password'];
+    protected $fillable = ['user_id'];
 
     // -------------------realtions------------------
     public function user(): HasOne
