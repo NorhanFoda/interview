@@ -10,7 +10,12 @@
       <ul>
         <li><a href="/" class="active">Home</a></li>
         <li><a href="">Team</a></li>
-        <li><a href="{{ route('register.form') }}">Register</a></li>
+        @guest
+          <li><a href="{{ route('register.form') }}">Register</a></li>
+        @endguest
+        @auth
+          <li><a href="{{ route('logout') }}">Logout</a></li>
+        @endauth
       </ul>
       <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
     </nav>

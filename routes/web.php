@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\LogOutController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Members\MemberHomeController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -18,4 +20,8 @@ Route::post('/register', [RegisterController::class, 'store'])->name('register.s
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
 Route::post('/login', [LoginController::class, 'login'])->name('login.login');
 
-Route::get('/members', [MemberHomeController::class, 'home'])->name('members.home')->middleware('web');
+Route::group(['middleware' => 'web'], function () {
+    Route::get('/logout', [LogOutController::class, 'logout'])->name('logout');
+    Route::get('/members', [MemberHomeController::class, 'home'])->name('members.home');
+});
+
