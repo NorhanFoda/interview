@@ -7,6 +7,7 @@ use App\Http\Requests\LoginRequest;
 use App\Repositories\Contracts\UserContract;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
@@ -23,13 +24,22 @@ class LoginController extends Controller
         $this->repository = $repository;
     }
 
-    public function showRegisterForm()
+    public function showLoginForm()
     {
         return view('auth.login');
     }
 
     public function login(LoginRequest $request)
     {
-        
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            return redirect()->route('members.home')
+                ->with('success', 'Login successful!');
+        }
+
+        return redirect()->back()
+            ->withErrors(['error' => 'Invalid email or password'])
+            ->withInput();
     }
 }

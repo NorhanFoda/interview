@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Members\MemberHomeController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -14,4 +16,6 @@ Route::get('/register', [RegisterController::class, 'showRegisterForm'])->name('
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
-Route::post('/login', [LoginController::class, 'store'])->name('login.store');
+Route::post('/login', [LoginController::class, 'login'])->name('login.login');
+
+Route::get('/memners', [MemberHomeController::class, 'index'])->name('members.home');
