@@ -18,4 +18,4 @@ Route::post('/register', [RegisterController::class, 'store'])->name('register.s
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.form');
 Route::post('/login', [LoginController::class, 'login'])->name('login.login');
 
-Route::get('/memners', [MemberHomeController::class, 'index'])->name('members.home');
+Route::get('/members', [MemberHomeController::class, 'home'])->name('members.home')->middleware('web');

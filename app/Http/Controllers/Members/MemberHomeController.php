@@ -7,5 +7,8 @@ use Illuminate\Http\Request;
 
 class MemberHomeController extends Controller
 {
-    //
+    public function home()
+    {
+        return view('members.home');
+    }
 }

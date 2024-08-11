@@ -23,7 +23,7 @@ class LoginRequest extends FormRequest
     {
         return [
             'email' => \config('validations.email.req')."|".sprintf(\config('validations.model.exists_with_col'), 'users', 'email'),
-            'password' => \config('validations.password.req'),
+            'password' => "required",
         ];
     }
 }
