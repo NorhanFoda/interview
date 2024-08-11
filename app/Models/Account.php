@@ -11,12 +11,12 @@ class Account extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['user_id'];
+    protected $fillable = ['email', 'password'];
 
     // -------------------realtions------------------
     public function user(): HasOne
     {
-        return $thsi->hasOne(User::class);
+        return $this->hasOne(User::class);
     }
     // -------------------realtions------------------
 

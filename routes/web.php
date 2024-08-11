@@ -21,7 +21,7 @@ Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login.for
 Route::post('/login', [LoginController::class, 'login'])->name('login.login');
 
 Route::group(['middleware' => 'web'], function () {
-    Route::get('/logout', [LogOutController::class, 'logout'])->name('logout');
+    Route::get('/logout', LogOutController::class)->name('logout');
     Route::get('/members', [MemberHomeController::class, 'home'])->name('members.home');
 });
 
